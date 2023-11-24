@@ -20,7 +20,7 @@ class CreateProduksTable extends Migration
             $table->string('kode_produk');
             $table->string('title');
             $table->string('harga');
-            $table->string('deskripsi');
+            $table->text('deskripsi');
             $table->string('foto_1');
             $table->string('foto_2');
             $table->string('foto_3');

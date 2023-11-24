@@ -21,7 +21,7 @@ class CreateCustomersTable extends Migration
             $table->string('nama')->nullable();
             $table->string('gender')->nullable();
             $table->string('alamat')->nullable();
-            $table->string('about')->nullable();
+            $table->text('about')->nullable();
             $table->string('no_hp')->nullable();
             $table->timestamps();
         });

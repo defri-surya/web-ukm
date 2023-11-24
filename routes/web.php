@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\BackendController;
+use App\Http\Controllers\FrontendController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,9 +15,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Front End
+Route::get('/', [FrontendController::class, 'home']);
+Route::get('/contact-us', [FrontendController::class, 'contact']);
+Route::get('/product', [FrontendController::class, 'product']);
+Route::get('/product-detail', [FrontendController::class, 'productdetail']);
+Route::get('/cart', [FrontendController::class, 'cart']);
+Route::get('/order', [FrontendController::class, 'order']);
+
+// Back End
+Route::get('/profile', [BackendController::class, 'index'])->name('profile');
+Route::get('/edit-profile/{id}', [BackendController::class, 'edit'])->name('edit');
+Route::post('/update-profile/{id}', [BackendController::class, 'update'])->name('update-profile');
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');

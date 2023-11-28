@@ -97,10 +97,12 @@
                                     <h6 class="mb-0">Profile Information</h6>
                                 </div>
                                 <div class="col-md-4 text-end">
-                                    <a href="{{ route('edit', $data->kode_regis) }}">
-                                        <i class="fas fa-user-edit text-secondary text-sm" data-bs-toggle="tooltip"
-                                            data-bs-placement="top" title="Edit Profile"></i>
-                                    </a>
+                                    @if (\Illuminate\Support\Facades\Gate::any(['isPengelola', 'isCustomer']))
+                                        <a href="{{ route('edit', $data->kode_regis) }}">
+                                            <i class="fas fa-user-edit text-secondary text-sm" data-bs-toggle="tooltip"
+                                                data-bs-placement="top" title="Edit Profile"></i>
+                                        </a>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -116,16 +118,34 @@
                             @endif
                             <hr class="horizontal gray-light my-4">
                             <ul class="list-group">
-                                <li class="list-group-item border-0 ps-0 text-sm">
-                                    <strong class="text-dark">
-                                        Full Name:
-                                    </strong> &nbsp; {{ $data->nama }}
-                                </li>
-                                <li class="list-group-item border-0 ps-0 text-sm">
-                                    <strong class="text-dark">
-                                        Username:
-                                    </strong> &nbsp; {{ $user->username }}
-                                </li>
+                                @if (\Illuminate\Support\Facades\Gate::any(['isPengelola', 'isCustomer']))
+                                    <li class="list-group-item border-0 ps-0 text-sm">
+                                        <strong class="text-dark">
+                                            Full Name:
+                                        </strong> &nbsp; {{ $data->nama }}
+                                    </li>
+                                @endif
+                                @can('isSuperadmin')
+                                    <li class="list-group-item border-0 ps-0 text-sm">
+                                        <strong class="text-dark">
+                                            Full Name:
+                                        </strong> &nbsp; {{ $data->name }}
+                                    </li>
+                                @endcan
+                                @if (\Illuminate\Support\Facades\Gate::any(['isPengelola', 'isCustomer']))
+                                    <li class="list-group-item border-0 ps-0 text-sm">
+                                        <strong class="text-dark">
+                                            Username:
+                                        </strong> &nbsp; {{ $user->username }}
+                                    </li>
+                                @endif
+                                @can('isSuperadmin')
+                                    <li class="list-group-item border-0 ps-0 text-sm">
+                                        <strong class="text-dark">
+                                            Username:
+                                        </strong> &nbsp; {{ $data->username }}
+                                    </li>
+                                @endcan
                                 @if (empty($data->no_hp))
                                     <li class="list-group-item border-0 ps-0 text-sm">
                                         <strong class="text-dark">
@@ -139,11 +159,20 @@
                                         </strong> &nbsp; {{ $data->no_hp }}
                                     </li>
                                 @endif
-                                <li class="list-group-item border-0 ps-0 text-sm">
-                                    <strong class="text-dark">
-                                        Email:
-                                    </strong> &nbsp; {{ $user->email }}
-                                </li>
+                                @if (\Illuminate\Support\Facades\Gate::any(['isPengelola', 'isCustomer']))
+                                    <li class="list-group-item border-0 ps-0 text-sm">
+                                        <strong class="text-dark">
+                                            Email:
+                                        </strong> &nbsp; {{ $user->email }}
+                                    </li>
+                                @endif
+                                @can('isSuperadmin')
+                                    <li class="list-group-item border-0 ps-0 text-sm">
+                                        <strong class="text-dark">
+                                            Email:
+                                        </strong> &nbsp; {{ $data->email }}
+                                    </li>
+                                @endcan
                                 @if (empty($data->gender))
                                     <li class="list-group-item border-0 ps-0 text-sm">
                                         <strong class="text-dark">

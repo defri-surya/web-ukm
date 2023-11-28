@@ -16,7 +16,7 @@ class CreatePengelolasTable extends Migration
         Schema::create('pengelolas', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users');
-            $table->string('kode_regis');
+            $table->string('kode_regis')->unique();
             $table->string('foto')->nullable();
             $table->string('nama')->nullable();
             $table->string('gender')->nullable();

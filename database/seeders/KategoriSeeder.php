@@ -16,13 +16,16 @@ class KategoriSeeder extends Seeder
     {
         DB::table('kategoris')->insert([
             [
-                'title' => 'Makanan'
+                'title' => 'Makanan',
+                'tumb' => null
             ],
             [
-                'title' => 'Baju'
+                'title' => 'Baju',
+                'tumb' => null
             ],
             [
-                'title' => 'Oleh-Oleh'
+                'title' => 'Oleh-Oleh',
+                'tumb' => null
             ]
         ]);
     }

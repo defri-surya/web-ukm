@@ -15,15 +15,16 @@ class CreateCartsTable extends Migration
     {
         Schema::create('carts', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('pengelola_id')->constrained('pengelolas');
-            $table->foreignId('produk_id')->constrained('produks');
-            $table->foreignId('customer_id')->constrained('customers');
+            $table->foreignId('pengelola_id');
+            $table->foreignId('produk_id');
+            $table->foreignId('customer_id');
             $table->string('foto');
-            $table->string('kode_produk');
+            $table->string('kode_produk')->unique();
             $table->string('harga');
             $table->string('qty');
             $table->string('total');
             $table->string('pajak');
+            $table->string('status');
             $table->timestamps();
         });
     }

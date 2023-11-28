@@ -15,16 +15,18 @@ class CreateTransaksisTable extends Migration
     {
         Schema::create('transaksis', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('cart_id')->constrained('carts');
-            $table->string('kode_produk');
-            $table->string('kode_transaksi');
+            $table->foreignId('pengelola_id');
+            $table->foreignId('produk_id');
+            $table->foreignId('customer_id');
+            $table->string('kode_produk')->unique();
+            $table->string('kode_transaksi')->unique();
             $table->string('tgl_transaksi');
             $table->string('harga');
             $table->string('qty');
             $table->string('total');
             $table->string('pajak');
             $table->string('payment_method');
-            $table->string('payment_status');
+            $table->enum('payment_status', ['Process', 'Success', 'Expired']);
             $table->timestamps();
         });
     }

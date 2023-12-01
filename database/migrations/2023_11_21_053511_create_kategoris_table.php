@@ -17,6 +17,7 @@ class CreateKategorisTable extends Migration
             $table->id();
             $table->string('tumb');
             $table->string('title');
+            $table->string('slug');
             $table->timestamps();
         });
     }

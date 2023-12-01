@@ -18,13 +18,8 @@ class CreateCartsTable extends Migration
             $table->foreignId('pengelola_id');
             $table->foreignId('produk_id');
             $table->foreignId('customer_id');
-            $table->string('foto');
-            $table->string('kode_produk')->unique();
-            $table->string('harga');
             $table->string('qty');
             $table->string('total');
-            $table->string('pajak');
-            $table->string('status');
             $table->timestamps();
         });
     }

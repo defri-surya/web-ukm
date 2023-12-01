@@ -46,29 +46,6 @@
                         <a href="/contact-us"
                             class="nav-item nav-link @if (Request::segment(1) == 'contact-us') active @endif">Contact Us</a>
                     </div>
-                    <div class="navbar-nav ml-auto py-0 d-none d-lg-block">
-                        @if (auth()->user() != null)
-                            @if (auth()->user()->role === 'customer')
-                                <a href="/cart" class="btn px-0 ml-3">
-                                    <i class="fas fa-shopping-cart text-primary"></i>
-                                    <span class="badge text-secondary border border-secondary rounded-circle"
-                                        style="padding-bottom: 2px;">{{ $cartCount }}</span>
-                                </a>
-                            @else
-                                <a href="/cart" class="btn px-0 ml-3" hidden>
-                                    <i class="fas fa-shopping-cart text-primary"></i>
-                                    <span class="badge text-secondary border border-secondary rounded-circle"
-                                        style="padding-bottom: 2px;">0</span>
-                                </a>
-                            @endif
-                        @else
-                            <a href="{{ route('register') }}" class="btn px-0 ml-3">
-                                <i class="fas fa-shopping-cart text-primary"></i>
-                                <span class="badge text-secondary border border-secondary rounded-circle"
-                                    style="padding-bottom: 2px;">0</span>
-                            </a>
-                        @endif
-                    </div>
                 </div>
             </nav>
         </div>

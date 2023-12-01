@@ -10,7 +10,12 @@
                     Dashboard
                 </a>
             </li>
-            <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Transaction</li>
+            <li class="breadcrumb-item text-sm">
+                <a class="opacity-5 text-dark" href="/transaction">
+                    Transaction
+                </a>
+            </li>
+            <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Detail Transaction</li>
         </ol>
         <h6 class="font-weight-bolder mb-0">Detail Transaction</h6>
     </nav>
@@ -37,17 +42,35 @@
                                             class="text-dark font-weight-bold ms-sm-2">{{ $formattedDate1 }}</span></span>
                                     <span class="mb-2 text-xs">Transaction Code: <span
                                             class="text-dark font-weight-bold ms-sm-2">{{ $data->kode_transaksi }}</span></span>
-                                    <span class="mb-2 text-xs">Product Code: <span
-                                            class="text-dark ms-sm-2 font-weight-bold">{{ $data->kode_produk }}</span></span>
-                                    <span class="mb-2 text-xs">Product Name: <span
-                                            class="text-dark ms-sm-2 font-weight-bold">{{ $product->title }}</span></span>
-                                    <span class="mb-2 text-xs">Quantity: <span
-                                            class="text-dark ms-sm-2 font-weight-bold">{{ $data->qty }}</span></span>
-                                    <span class="mb-2 text-xs">Price: <span class="text-dark ms-sm-2 font-weight-bold">Rp
-                                            {{ number_format($data->harga) }}</span></span>
-                                    <span class="mb-2 text-xs">Tax: <span
-                                            class="text-dark ms-sm-2 font-weight-bold">{{ $data->pajak }}%</span></span>
-                                    <span class="mb-2 text-xs">Total: <span class="text-dark ms-sm-2 font-weight-bold">Rp
+                                    @foreach ($transaksi as $item)
+                                        @php
+                                            $pengelola = App\Models\Pengelola::where('id', $item->pengelola_id)->first();
+                                            $product = App\Models\Produk::where('id', $item->produk_id)->first();
+                                        @endphp
+                                        <hr>
+                                        <span class="mb-2 text-xs">Product Code: <span
+                                                class="text-dark ms-sm-2 font-weight-bold">{{ $product->kode_produk }}</span></span>
+                                        <span class="mb-2 text-xs">Merchant: <span
+                                                class="text-dark ms-sm-2 font-weight-bold">{{ $pengelola->nama }}</span></span>
+                                        <span class="mb-2 text-xs">Product Name: <span
+                                                class="text-dark ms-sm-2 font-weight-bold">{{ $product->title }}</span></span>
+                                        <span class="mb-2 text-xs">Quantity: <span
+                                                class="text-dark ms-sm-2 font-weight-bold">{{ $item->qty }}</span></span>
+                                        <span class="mb-2 text-xs">Price: <span
+                                                class="text-dark ms-sm-2 font-weight-bold">Rp
+                                                {{ number_format($product->harga) }}</span></span>
+                                        <span class="mb-2 text-xs">Total: <span
+                                                class="text-dark ms-sm-2 font-weight-bold">Rp
+                                                {{ number_format($item->subtotal) }}</span></span>
+                                        <hr>
+                                    @endforeach
+                                    <span class="mb-2 text-xs">Subtotal: <span class="text-dark ms-sm-2 font-weight-bold">Rp
+                                            {{ number_format($subTotal) }}</span></span>
+                                    <span class="mb-2 text-xs">Tax (12%): <span
+                                            class="text-dark ms-sm-2 font-weight-bold">Rp
+                                            {{ number_format($tax) }}</span></span>
+                                    <span class="mb-2 text-xs">Total Payment: <span
+                                            class="text-dark ms-sm-2 font-weight-bold">Rp
                                             {{ number_format($data->total) }}</span></span>
                                     @if ($data->payment_status === 'Success')
                                         <span class="mb-2 text-xs">Payment Status: <span

@@ -18,14 +18,12 @@ class CreateTransaksisTable extends Migration
             $table->foreignId('pengelola_id');
             $table->foreignId('produk_id');
             $table->foreignId('customer_id');
-            $table->string('kode_produk')->unique();
-            $table->string('kode_transaksi')->unique();
+            $table->string('kode_transaksi');
             $table->string('tgl_transaksi');
-            $table->string('harga');
             $table->string('qty');
+            $table->string('subtotal');
             $table->string('total');
-            $table->string('pajak');
-            $table->string('payment_method');
+            $table->string('payment_method')->nullable();
             $table->enum('payment_status', ['Process', 'Success', 'Expired']);
             $table->timestamps();
         });

@@ -17,16 +17,18 @@ use Illuminate\Support\Facades\Route;
 
 // Front End
 Route::get('/', [FrontendController::class, 'home']);
+Route::get('/welcome', [FrontendController::class, 'home']);
 Route::get('/contact-us', [FrontendController::class, 'contact']);
-Route::get('/product', [FrontendController::class, 'product']);
-Route::get('/product-detail', [FrontendController::class, 'productdetail']);
-Route::get('/cart', [FrontendController::class, 'cart']);
-Route::get('/order', [FrontendController::class, 'order']);
+Route::get('/our-product', [FrontendController::class, 'product']);
+Route::get('/our-product-detail/{id}', [FrontendController::class, 'productdetail'])->name('productdetail');
 
 // Back End
 Route::get('/profile', [BackendController::class, 'index'])->name('profile');
 Route::get('/edit-profile/{id}', [BackendController::class, 'edit'])->name('edit');
 Route::post('/update-profile/{id}', [BackendController::class, 'update'])->name('update-profile');
+
+// Filter Product By Category
+Route::get('/filter-product/{slug}', [FrontendController::class, 'filterProduk'])->name('filterProduk');
 
 
 Route::get('/dashboard', function () {

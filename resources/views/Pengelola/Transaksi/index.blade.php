@@ -30,13 +30,6 @@
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             Transaction Code
                                         </th>
-                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            Product Name
-                                        </th>
-                                        <th
-                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                            Product Code
-                                        </th>
                                         <th
                                             class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             Transaction Date
@@ -63,19 +56,6 @@
                                                         </h6>
                                                     </div>
                                                 </div>
-                                            </td>
-                                            @php
-                                                $prod = App\Models\Produk::where('id', $item->produk_id)->first();
-                                            @endphp
-                                            <td>
-                                                <div class="d-flex px-2 py-1">
-                                                    <div class="d-flex flex-column justify-content-center">
-                                                        <h6 class="mb-0 text-sm">{{ $prod->title }}</h6>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <p class="text-xs font-weight-bold mb-0">{{ $item->kode_produk }}</p>
                                             </td>
                                             @php
                                                 $tgl1 = $item->tgl_transaksi;

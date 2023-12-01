@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Superadmin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Kategori;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -21,6 +22,8 @@ class CategoryController extends Controller
         ]);
 
         $data = $request->all();
+        $baseSlug = Str::slug($data['title'], '-');
+        $data['slug'] = $baseSlug;
 
         if ($request->has('tumb')) {
             $foto1 = $request->tumb;

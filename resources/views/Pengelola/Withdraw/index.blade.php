@@ -1,6 +1,6 @@
 @extends('layouts.back-end.main')
 
-@section('title', 'Withdraw')
+@section('title', 'Withdrawl')
 
 @section('breadcum')
     <nav aria-label="breadcrumb">
@@ -10,9 +10,9 @@
                     Dashboard
                 </a>
             </li>
-            <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Withdraw</li>
+            <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Withdrawl</li>
         </ol>
-        <h6 class="font-weight-bolder mb-0">Withdraw</h6>
+        <h6 class="font-weight-bolder mb-0">Withdrawl</h6>
     </nav>
 @endsection
 
@@ -23,7 +23,7 @@
                 <div class="card mb-4">
                     <div class="card-header pb-0">
                         <h5 class="mb-3 text-center">
-                            Saldo Anda : Rp 100.000
+                            Saldo Anda : Rp {{ number_format($afterWD) }}
                         </h5>
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
@@ -37,9 +37,15 @@
             <div class="col-12">
                 <div class="card mb-4">
                     <div class="card-header pb-0">
-                        <a href="/add-withdraw" class="btn btn-outline-primary">
-                            Withdraw Now
-                        </a>
+                        @if ($afterWD <= 100000)
+                            <a href="/add-withdraw" class="btn btn-outline-primary" hidden>
+                                Withdraw Now
+                            </a>
+                        @else
+                            <a href="/add-withdraw" class="btn btn-outline-primary">
+                                Withdrawl Now
+                            </a>
+                        @endif
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
                         <div class="table-responsive p-0">
@@ -47,11 +53,11 @@
                                 <thead>
                                     <tr>
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            Withdraw Code
+                                            Withdrawl Code
                                         </th>
                                         <th
                                             class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            Withdraw Date
+                                            Withdrawl Date
                                         </th>
                                         <th
                                             class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">

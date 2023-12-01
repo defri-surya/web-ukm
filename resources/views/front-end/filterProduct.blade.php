@@ -1,6 +1,6 @@
 @extends('layouts.front-end.main')
 
-@section('title', 'Our Product')
+@section('title', 'Filter Product')
 
 @section('content')
     <!-- Breadcrumb Start -->
@@ -9,17 +9,24 @@
             <div class="col-12">
                 <nav class="breadcrumb bg-light mb-30">
                     <a class="breadcrumb-item text-dark" href="/">Home</a>
-                    <span class="breadcrumb-item active">Product List</span>
+                    <span class="breadcrumb-item active">Product List By Category {{ $kategori->title }}</span>
                 </nav>
             </div>
         </div>
     </div>
     <!-- Breadcrumb End -->
 
+
     <!-- Shop Start -->
     <div class="container-fluid">
         <div class="row px-xl-5">
+            <!-- Shop Sidebar Start -->
             <div class="col-lg-12 col-md-12">
+                <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Filter by
+                        category : {{ $kategori->title }}</span></h5>
+                <!-- Shop Sidebar End -->
+
+
                 <!-- Shop Product Start -->
                 <div class="col-lg-12 col-md-12">
                     <div class="row pb-3">
@@ -41,7 +48,7 @@
                                             {{ $item->title }}
                                         </a>
                                         <div class="d-flex align-items-center justify-content-center mt-2">
-                                            <h5>${{ number_format($item->harga) }}</h5>
+                                            <h5>Rp {{ number_format($item->harga) }}</h5>
                                             {{-- <h6 class="text-muted ml-2"><del>$123.00</del></h6> --}}
                                         </div>
                                     </div>
@@ -49,10 +56,8 @@
                             </div>
                         @empty
                             <div class="col-lg-12 col-md-12 col-sm-12 pb-1">
-                                <div class="product-item bg-light mb-4">
-                                    <div class="d-flex align-items-center justify-content-center mt-2">
-                                        <h5>Product Not Available!</h5>
-                                    </div>
+                                <div class="product-item bg-light mb-4 text-center">
+                                    <h5>Product Not Available!</h5>
                                 </div>
                             </div>
                         @endforelse
@@ -65,6 +70,5 @@
                 <!-- Shop Product End -->
             </div>
         </div>
-    </div>
-    <!-- Shop End -->
-@endsection
+        <!-- Shop End -->
+    @endsection

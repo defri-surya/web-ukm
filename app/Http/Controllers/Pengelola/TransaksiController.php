@@ -14,7 +14,9 @@ class TransaksiController extends Controller
     public function index()
     {
         $pengelola = Pengelola::where('user_id', auth()->user()->id)->first();
-        $data = Transaksi::where('pengelola_id', $pengelola->id)->get();
+        $data = Transaksi::where('pengelola_id', $pengelola->id)->distinct()
+            ->get(['kode_transaksi', 'tgl_transaksi', 'total', 'payment_status']);
+
         return view('Pengelola.Transaksi.index', compact('data'));
     }
 
@@ -22,7 +24,16 @@ class TransaksiController extends Controller
     {
         $data = Transaksi::where('kode_transaksi', $id)->first();
         $custom = Customer::where('id', $data->customer_id)->first();
-        $product = Produk::where('id', $data->produk_id)->first();
-        return view('Pengelola.Transaksi.show', compact('data', 'custom', 'product'));
+        $transaksi = Transaksi::where('kode_transaksi', $id)->get();
+
+        $subTotal = 0;
+        foreach ($transaksi as $item) {
+            $itemPrice = $item->subtotal;
+            $subTotal += $itemPrice;
+        }
+
+        $tax = $subTotal * (12 / 100);
+        $totalfix = $subTotal + $tax;
+        return view('Pengelola.Transaksi.show', compact('data', 'custom', 'subTotal', 'tax', 'totalfix', 'transaksi'));
     }
 }

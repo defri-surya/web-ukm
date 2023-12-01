@@ -11,4 +11,9 @@ class Kategori extends Model
 
     protected $table = 'kategoris';
     protected $guarded = ['id'];
+
+    public function products()
+    {
+        return $this->hasMany(Produk::class);
+    }
 }

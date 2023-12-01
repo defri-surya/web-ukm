@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class KategoriSeeder extends Seeder
 {
@@ -17,15 +18,18 @@ class KategoriSeeder extends Seeder
         DB::table('kategoris')->insert([
             [
                 'title' => 'Makanan',
-                'tumb' => null
+                'tumb' => null,
+                'slug' => Str::slug('Makanan', '-')
             ],
             [
                 'title' => 'Baju',
-                'tumb' => null
+                'tumb' => null,
+                'slug' => Str::slug('Baju', '-')
             ],
             [
                 'title' => 'Oleh-Oleh',
-                'tumb' => null
+                'tumb' => null,
+                'slug' => Str::slug('Oleh-Oleh', '-')
             ]
         ]);
     }

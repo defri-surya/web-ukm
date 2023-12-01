@@ -1,6 +1,6 @@
 @extends('layouts.back-end.main')
 
-@section('title', 'Detail Withdraw')
+@section('title', 'Detail Withdrawl')
 
 @section('breadcum')
     <nav aria-label="breadcrumb">
@@ -10,9 +10,14 @@
                     Dashboard
                 </a>
             </li>
-            <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Withdraw</li>
+            <li class="breadcrumb-item text-sm">
+                <a class="opacity-5 text-dark" href="/withdraw">
+                    Withdrawl
+                </a>
+            </li>
+            <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Detail Withdrawl</li>
         </ol>
-        <h6 class="font-weight-bolder mb-0">Detail Withdraw</h6>
+        <h6 class="font-weight-bolder mb-0">Detail Withdrawl</h6>
     </nav>
 @endsection
 

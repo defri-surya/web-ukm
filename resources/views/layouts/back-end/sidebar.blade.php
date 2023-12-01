@@ -266,6 +266,9 @@
                         <span class="nav-link-text ms-1">Transaction History</span>
                     </a>
                 </li>
+                <a class="btn bg-gradient-info mt-2 w-95" href="/">
+                    Go Shop Now
+                </a>
             @endcan
             <li class="nav-item mt-3">
                 <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Account pages</h6>
@@ -303,7 +306,7 @@
         </ul>
         <form method="POST" action="{{ route('logout') }}">
             @csrf
-            <a class="btn bg-gradient-primary mt-4 w-100" href="{{ route('logout') }}"
+            <a class="btn bg-gradient-primary mt-4 w-95" href="{{ route('logout') }}"
                 onclick="event.preventDefault();
         this.closest('form').submit();">
                 Sign Out

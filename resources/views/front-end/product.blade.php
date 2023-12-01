@@ -23,7 +23,7 @@
                 <!-- Shop Product Start -->
                 <div class="col-lg-12 col-md-12">
                     <div class="row pb-3">
-                        @forelse ($produk as $item)
+                        @forelse ($prod as $item)
                             <div class="col-lg-4 col-md-6 col-sm-6 pb-1">
                                 <div class="product-item bg-light mb-4">
                                     <div class="product-img position-relative overflow-hidden">
@@ -58,7 +58,7 @@
                         @endforelse
 
                         <div class="pagination justify-content-center col-12">
-                            {{ $produk->links('vendor.pagination.custom') }}
+                            {{ $prod->links('vendor.pagination.custom') }}
                         </div>
                     </div>
                 </div>

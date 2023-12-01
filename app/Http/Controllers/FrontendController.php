@@ -88,9 +88,7 @@ class FrontendController extends Controller
             $prod = Produk::where('kode_produk', $id)->first();
             $produk = Produk::where('kode_produk', '!=', $id)->get();
             $kategori = Kategori::where('id', $prod->kategori_id)->first();
-            $custom = Customer::where('user_id', auth()->user()->id)->first();
-            $cartCount = Cart::where('customer_id', $custom->id)->count();
-            return view('front-end.product-detail', compact('cat', 'prod', 'kategori', 'produk', 'custom', 'cartCount'));
+            return view('front-end.product-detail', compact('cat', 'prod', 'kategori', 'produk'));
         }
     }
 
@@ -115,9 +113,7 @@ class FrontendController extends Controller
             $cat = Kategori::all();
             $kategori = Kategori::where('slug', $slug)->first();
             $produk = Produk::where('kategori_id', $kategori->id)->paginate(9);
-            $custom = Customer::where('user_id', auth()->user()->id)->first();
-            $cartCount = Cart::where('customer_id', $custom->id)->count();
-            return view('front-end.filterProduct', compact('cat', 'kategori', 'produk', 'custom', 'cartCount'));
+            return view('front-end.filterProduct', compact('cat', 'kategori', 'produk'));
         }
     }
 }

@@ -3,6 +3,7 @@
 use App\Http\Controllers\Customer\CartController;
 use App\Http\Controllers\Customer\CheckoutController;
 use App\Http\Controllers\Customer\HistoriTransaksiController;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => ['auth' => 'CekRole:customer']], function () {
@@ -18,5 +19,13 @@ Route::group(['middleware' => ['auth' => 'CekRole:customer']], function () {
         // Order
         Route::get('/order', [CheckoutController::class, 'index']);
         Route::post('/checkout', [CheckoutController::class, 'store'])->name('checkout');
+        Route::get('payment', [CheckoutController::class, 'payment'])->name('payment');
+
+        // Invoice
+        Route::get('/invoice', [CheckoutController::class, 'invoice'])->name('invoice');
+        Route::get('/delete-payment-cookie', function () {
+            $cookie = Cookie::forget('payment');
+            return response()->json(['message' => 'Cookie deleted'])->withCookie($cookie);
+        })->name('deletePaymentCookie');
     });
 });

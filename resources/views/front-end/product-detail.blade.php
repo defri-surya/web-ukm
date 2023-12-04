@@ -3,6 +3,7 @@
 @section('title', 'Product Detail')
 
 @section('content')
+    @include('sweetalert::alert')
     <!-- Breadcrumb Start -->
     <div class="container-fluid">
         <div class="row px-xl-5">

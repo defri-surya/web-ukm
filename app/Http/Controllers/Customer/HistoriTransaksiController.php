@@ -8,6 +8,7 @@ use App\Models\Pengelola;
 use App\Models\Produk;
 use App\Models\Transaksi;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cookie;
 
 class HistoriTransaksiController extends Controller
 {
@@ -16,6 +17,7 @@ class HistoriTransaksiController extends Controller
         $customer = Customer::where('user_id', auth()->user()->id)->first();
         $data = Transaksi::where('customer_id', $customer->id)->distinct()
             ->get(['kode_transaksi', 'tgl_transaksi', 'total', 'payment_status']);
+
         return view('Customer.HistoriTransaksi.index', compact('data'));
     }
 

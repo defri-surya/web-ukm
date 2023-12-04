@@ -24,6 +24,11 @@
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="{{ asset('asset') }}/front-end/css/style.css" rel="stylesheet">
+
+    <!-- MIDTRANS CLIENT KEY -->
+    <script type="text/javascript" src="https://app.sandbox.midtrans.com/snap/snap.js"
+        data-client-key="SB-Mid-client-ZIuQ4BWKiqlM1TO0"></script>
+
     @yield('css')
 </head>
 

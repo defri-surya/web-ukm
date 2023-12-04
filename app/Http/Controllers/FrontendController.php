@@ -59,8 +59,8 @@ class FrontendController extends Controller
             }
         } else {
             $cat = Kategori::all();
-            $prod = Produk::paginate(9);
-            return view('front-end.product', compact('cat', 'prod'));
+            $produk = Produk::paginate(9);
+            return view('front-end.product', compact('cat', 'produk'));
         }
     }
 

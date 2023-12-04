@@ -32,11 +32,18 @@ class CartController extends Controller
     public function store(Request $request)
     {
         $produk = Produk::where('id', $request->produk_id)->first();
-        $data = $request->all();
-        $data['total'] = $request->qty * $produk->harga;
+        $custom = Customer::where('user_id', auth()->user()->id)->first();
+        $cekCart = Cart::where('produk_id', $request->produk_id)->where('customer_id', $custom->id)->exists();
+        if ($cekCart) {
+            toast('The product is already available in your cart!', 'info');
+            return redirect()->back();
+        } else {
+            $data = $request->all();
+            $data['total'] = $request->qty * $produk->harga;
 
-        Cart::create($data);
-        return redirect()->route('cart.index');
+            Cart::create($data);
+            return redirect()->route('cart.index');
+        }
     }
 
     public function destroy($id)

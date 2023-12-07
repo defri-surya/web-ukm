@@ -16,7 +16,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Front End
-Route::get('/', [FrontendController::class, 'home']);
 Route::get('/welcome', [FrontendController::class, 'home']);
 Route::get('/contact-us', [FrontendController::class, 'contact']);
 Route::get('/our-product', [FrontendController::class, 'product']);
@@ -30,7 +29,6 @@ Route::post('/update-profile/{id}', [BackendController::class, 'update'])->name(
 // Filter Product By Category
 Route::get('/filter-product/{slug}', [FrontendController::class, 'filterProduk'])->name('filterProduk');
 
-
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
@@ -39,3 +37,4 @@ require __DIR__ . '/auth.php';
 require __DIR__ . '/admin.php';
 require __DIR__ . '/pengelola.php';
 require __DIR__ . '/customer.php';
+require __DIR__ . '/webStore.php';

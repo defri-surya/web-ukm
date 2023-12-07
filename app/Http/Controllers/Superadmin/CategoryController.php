@@ -27,8 +27,8 @@ class CategoryController extends Controller
 
         if ($request->has('tumb')) {
             $foto1 = $request->tumb;
-            $new_foto = time() . 'FotoProduct' . $foto1->getClientOriginalName();
-            $tujuan_uploud = 'upload/FotoProduct/';
+            $new_foto = time() . 'FotoCategory' . $foto1->getClientOriginalName();
+            $tujuan_uploud = 'upload/FotoCategory/';
             $foto1->move($tujuan_uploud, $new_foto);
             $data['tumb'] = $tujuan_uploud . $new_foto;
         }

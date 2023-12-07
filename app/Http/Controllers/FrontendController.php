@@ -8,6 +8,7 @@ use App\Models\Kategori;
 use App\Models\Pengelola;
 use App\Models\Produk;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class FrontendController extends Controller
 {
